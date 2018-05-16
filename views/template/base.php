@@ -13,6 +13,7 @@
             <?php include $view_path; ?>
             <?php include_view('partials/footer'); ?>
         </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="/assets/js/site.js"></script>
     </body>
 </html>
