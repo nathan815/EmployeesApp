@@ -6,16 +6,7 @@ use App\Database\DataQuery;
 
 abstract class Model {
 
-    protected $databaseConn;
-    protected $database;
-    protected $tableName;
-
     protected $validationErrors = [];
-
-    public function __construct() {
-        $this->databaseConn = DatabaseConnection::getInstance();
-        $this->database = new DataQuery($this->databaseConn);
-    }
 
     public abstract function isValid();
 

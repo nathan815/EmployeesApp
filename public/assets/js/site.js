@@ -62,7 +62,7 @@ let StatusBox = {
     },
     neutral: function(msg, timeout) {
         StatusBox.add(msg, 'secondary', timeout);
-    },
+    }
 };
 
 $(document).ready(function() {
