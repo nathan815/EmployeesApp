@@ -14,22 +14,18 @@ define('VIEW_PATH', BASE_PATH . 'views' . DIRECTORY_SEPARATOR);
 
 session_start();
 
-require_once BASE_PATH . 'src/autoload.php';
-require_once BASE_PATH . 'src/helpers.php';
+require_once SRC_PATH . 'autoload.php';
+require_once SRC_PATH . 'helpers.php';
 
 define('APP_NAME', 'Employee App');
 define('ENVIRONMENT', env('environment'));
 
+$routes = include SRC_PATH . 'routes.php';
+
 $router = new Router();
-$router->addRoute('GET', new Route('/', 'EmployeeController', 'index'));
-
-$router->addRoute('GET', new Route('/employees/{id}/edit', 'EmployeeController', 'edit'));
-
-$router->addRoute('POST', new Route('/employees/{id}/edit', 'EmployeeController', 'editSave'));
-$router->addRoute('POST', new Route('/employees/{id}/delete', 'EmployeeController', 'delete'));
-
-$router->addRoute('GET', new Route('/employees/new', 'EmployeeController', 'addForm'));
-$router->addRoute('POST', new Route('/employees/new', 'EmployeeController', 'add'));
+foreach($routes as $route) {
+    $router->addRoute($route[0], new Route($route[1], $route[2], $route[3]));
+}
 
 try {
     $router->resolve($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);

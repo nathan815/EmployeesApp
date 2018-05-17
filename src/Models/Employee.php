@@ -10,6 +10,7 @@ class Employee extends Model {
     public $first_name;
     public $last_name;
     public $created_at;
+    public $updated_at;
 
     public function isValid() {
         $this->validateFirstName();

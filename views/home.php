@@ -7,6 +7,7 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th>Created</th>
+            <th>Updated</th>
             <th></th>
         </tr>
         <?php foreach($employees as $employee): ?>
@@ -14,7 +15,12 @@
             <td><?=$employee->id?></td>
             <td><?=$employee->first_name?></td>
             <td><?=$employee->last_name?></td>
-            <td><?=$employee->created_at?></td>
+            <td>
+                <time class="timeago" datetime="<?=$employee->created_at?>"><?=$employee->created_at?></time>
+            </td>
+            <td>
+                <time class="timeago" datetime="<?=$employee->updated_at?>"><?=$employee->updated_at ? $employee->updated_at : '--'?></time>
+            </td>
             <td class="pr-0">
                 <form action="/employees/<?=$employee->id?>/delete" method="post" class="text-right">
                     <a href="/employees/<?=$employee->id?>/edit" class="btn btn-secondary btn-sm"><i class="fas fa-pencil-alt"></i> Edit</a>

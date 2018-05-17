@@ -27,7 +27,7 @@ class EmployeeService extends Service {
     }
 
     public function update(Employee $employee) {
-        $sql = "UPDATE employees SET first_name = :first_name, last_name = :last_name WHERE id = :id";
+        $sql = "UPDATE employees SET first_name = :first_name, last_name = :last_name, updated_at = now() WHERE id = :id";
         $this->dataQuery->preparedQuery($sql, [
             'first_name' => $employee->first_name,
             'last_name' => $employee->last_name,
