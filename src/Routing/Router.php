@@ -18,6 +18,9 @@ class Router {
         if(!$route) {
             throw new InvalidRouteException("Route not found: $method $uri");
         }
+        $route->verifyControllerExists();
+        $route->verifyMethodExists();
+
         // Instantiate the controller and call the method for this route
         call_user_func_array([ new $route->controller, $route->method ], $route->params);
     }

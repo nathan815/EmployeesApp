@@ -9,15 +9,21 @@ class Route {
 
     public function __construct($pattern, $controller, $method) {
         $controller = 'App\Controllers\\' . $controller;
-        if(!class_exists($controller)) {
-            throw new \InvalidArgumentException("Controller $controller not found.");
-        }
-        if(!is_callable([$controller, $method])) {
-            throw new \InvalidArgumentException("Method $controller@$method not found.");
-        }
         $this->pattern = $pattern;
         $this->controller = $controller;
         $this->method = $method;
+    }
+
+    public function verifyControllerExists() {
+        if(!class_exists($this->controller)) {
+            throw new \InvalidArgumentException("Controller $this->controller not found.");
+        }
+    }
+
+    public function verifyMethodExists() {
+        if(!is_callable([$this->controller, $this->method])) {
+            throw new \InvalidArgumentException("Method $this->controller@$this->method not found.");
+        }
     }
 
     public function matchesUri($uri) {
