@@ -7,7 +7,7 @@
         <label for="lname">Last Name:</label>
         <input type="text" name="last_name" id="lname" class="form-control" value="<?= isset($employee) ? $employee->last_name : '' ?>" />
     </div>
-    <button type="submit" class="btn btn-primary">
+    <button type="submit" class="btn btn-success">
         <?= $type == 'add' ? 'Create' : 'Save Changes' ?>
     </button>
 </form>

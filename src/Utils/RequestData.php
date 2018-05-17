@@ -12,4 +12,12 @@ class RequestData {
         return isset($_POST[$key]) ? $_POST[$key] : null;
     }
 
+    public function allGetData() {
+        return $_GET;
+    }
+
+    public function allPostData() {
+        return $_POST;
+    }
+
 }

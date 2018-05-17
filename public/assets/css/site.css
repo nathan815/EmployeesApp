@@ -8,3 +8,6 @@ footer {
     border-top: 1px solid #f5f5f5;
     color: #777;
 }
+.navbar.bg-blue {
+    background-color: #1e6fb5;
+}

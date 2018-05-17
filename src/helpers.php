@@ -4,11 +4,13 @@ function value_or_default($value, $default) {
     return isset($value) ? $value : $default;
 }
 
-function include_view($path, $params = null) {
-    if ($params) {
-        extract($params);
-    }
-    include VIEW_PATH  . $path . '.php';
+function view_path($view) {
+    return \App\Utils\ViewRenderer::getViewPath($view);
+}
+
+function include_view_with_params($view, $params) {
+    $view = view_path($view);
+    \App\Utils\ViewRenderer::includeView($view, $params);
 }
 
 function env($key) {

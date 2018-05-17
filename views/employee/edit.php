@@ -3,4 +3,4 @@
     <p class="m-0">Employee #<?=$employee->id?></p>
 </header>
 
-<?php include_view('employee/partials/form', [ 'employee' => $employee, 'type' => 'edit' ]); ?>
+<?php include_view_with_params('employee/partials/form', [ 'employee' => $employee, 'type' => 'edit' ]); ?>

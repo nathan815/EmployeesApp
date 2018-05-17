@@ -2,4 +2,4 @@
     <h4>Add Employee</h4>
 </header>
 
-<?php include_view('employee/partials/form', [ 'employee' => null, 'type' => 'add' ]); ?>
+<?php include_view_with_params('employee/partials/form', [ 'employee' => null, 'type' => 'add' ]); ?>

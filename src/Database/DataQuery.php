@@ -23,6 +23,15 @@ class DataQuery {
         return $this->statement;
     }
 
+    public function fetchRowIntoObject($class) {
+        $rows = $this->fetchAllIntoObjects($class);
+        return isset($rows[0]) ? $rows[0] : null;
+    }
+
+    public function fetchAllIntoObjects($class) {
+        return $this->statement->fetchAll(\PDO::FETCH_CLASS, $class);
+    }
+
     private function handleErrors() {
         if(!$this->statement) {
             $err = $this->statement->errorInfo();

@@ -7,11 +7,11 @@
         <link href="/assets/css/site.css" rel="stylesheet" />
     </head>
     <body>
-        <?php include_view('partials/navbar'); ?>
+        <?php include view_path('partials/navbar'); ?>
         <div class="container container-fixed content">
-            <?php include_view('partials/flash_message'); ?>
-            <?php include $view_path; ?>
-            <?php include_view('partials/footer'); ?>
+            <?php include view_path('partials/flash_message'); ?>
+            <?php include $content_view; ?>
+            <?php include view_path('partials/footer'); ?>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="/assets/js/site.js"></script>
