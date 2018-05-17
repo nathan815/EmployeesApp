@@ -16,13 +16,13 @@ class Route {
 
     public function verifyControllerExists() {
         if(!class_exists($this->controller)) {
-            throw new \InvalidArgumentException("Controller $this->controller not found.");
+            throw new \Exception("Controller $this->controller not found.");
         }
     }
 
     public function verifyMethodExists() {
         if(!is_callable([$this->controller, $this->method])) {
-            throw new \InvalidArgumentException("Method $this->controller@$this->method not found.");
+            throw new \Exception("Method $this->controller@$this->method not found.");
         }
     }
 

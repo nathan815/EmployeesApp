@@ -11,3 +11,6 @@ footer {
 .navbar.bg-blue {
     background-color: #1e6fb5;
 }
+table.employees th {
+    border-top: none;
+}

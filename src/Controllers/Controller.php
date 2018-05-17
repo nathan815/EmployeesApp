@@ -18,11 +18,6 @@ class Controller {
         $this->request = new RequestData();
     }
 
-    protected function redirect($url) {
-        header('Location: ' . $url);
-        exit;
-    }
-
     public function outputError($errorCode) {
         http_response_code($errorCode);
         switch($errorCode) {
@@ -35,7 +30,13 @@ class Controller {
         exit;
     }
 
+    protected function redirect($url) {
+        header('Location: ' . $url);
+        exit;
+    }
+
     protected function outputJson($data) {
         echo json_encode($data);
+        exit;
     }
 }

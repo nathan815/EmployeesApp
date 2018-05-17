@@ -15,7 +15,7 @@ class EmployeeController extends Controller {
     }
 
     public function index() {
-        $employees = $this->employeeService->getAllEmployees('created_at DESC');
+        $employees = $this->employeeService->getAllEmployees('updated_at DESC, created_at DESC');
         $this->view->render('home', [
             'title' => 'All Employees',
             'employees' => $employees
@@ -54,7 +54,6 @@ class EmployeeController extends Controller {
             }
             else {
                 FlashMessage::send('<b>Error:</b> ' . $employee->getErrorString(), 'danger');
-                $this->sendBackFormData([ 'employee' => $employee ]);
             }
         }
         $this->redirect('/employees/' . $id . '/edit');
@@ -90,7 +89,7 @@ class EmployeeController extends Controller {
         $employee = $this->employeeService->findById($id);
         if($employee) {
             if($this->employeeService->delete($employee)) {
-                FlashMessage::send('Deleted employee ' . $id . ' successfully.', 'secondary');
+                FlashMessage::send('Deleted employee ' . $id . ' successfully.', 'warning');
             }
             else {
                 FlashMessage::send('Unable to delete employee.', 'danger');
