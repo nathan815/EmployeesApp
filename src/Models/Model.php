@@ -1,9 +1,6 @@
 <?php
 namespace App\Models;
 
-use App\Database\DatabaseConnection;
-use App\Database\DataQuery;
-
 abstract class Model {
 
     protected $validationErrors = [];
