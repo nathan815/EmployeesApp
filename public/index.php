@@ -24,6 +24,7 @@ $router = new Router();
 $router->addRoute('GET', new Route('/', 'EmployeeController', 'index'));
 
 $router->addRoute('GET', new Route('/employees/{id}/edit', 'EmployeeController', 'edit'));
+
 $router->addRoute('POST', new Route('/employees/{id}/edit', 'EmployeeController', 'editSave'));
 $router->addRoute('POST', new Route('/employees/{id}/delete', 'EmployeeController', 'delete'));
 
