@@ -65,6 +65,7 @@ let StatusBox = {
     }
 };
 
+
 $(document).ready(function() {
    EmployeeTable.registerClickHandlers();
    EmployeeTable.attachPlugins();

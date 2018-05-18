@@ -26,7 +26,7 @@ class DatabaseConnection {
         $this->host = env('db_host');
         $this->username = env('db_username');
         $this->password = env('db_password');
-        $this->database = env('db_database');
+        $this->database = env('db_name');
     }
 
     public static function getInstance() {
