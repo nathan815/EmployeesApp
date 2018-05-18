@@ -2,7 +2,7 @@
 use App\Routing\Router;
 use App\Routing\Route;
 use App\Routing\InvalidRouteException;
-use App\Controllers\Controller;
+use App\Controllers\ErrorPageController;
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -21,23 +21,31 @@ define('APP_NAME', 'Employee App');
 define('ENVIRONMENT', env('environment'));
 
 $routes = include SRC_PATH . 'routes.php';
-
 $router = new Router();
 foreach($routes as $route) {
     $router->addRoute($route[0], new Route($route[1], $route[2], $route[3]));
 }
 
+function display_exception($e) {
+    $controller = new ErrorPageController();
+    $controller->unhandledException($e);
+}
+
 try {
+
     $router->resolve($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
+
 } catch(InvalidRouteException $e) {
     if(ENVIRONMENT == 'local') {
-        throw $e;
+        display_exception($e);
     }
-    // Invalid route, output a 404 error
-    $controller = new Controller();
-    $controller->outputError(404);
+    else {
+        // Invalid route, output a 404 error
+        $controller = new ErrorPageController();
+        $controller->outputError(404);
+    }
 } catch (Exception $e) {
-    // Log exception and re-throw
+    // Log exception and display on page
     error_log($e->getMessage());
-    throw $e;
+    display_exception($e);
 }

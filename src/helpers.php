@@ -14,8 +14,12 @@ function include_view_with_params($view, $params) {
 }
 
 function env($key) {
+    $envFile = BASE_PATH . 'env.ini';
+    if(!file_exists($envFile)) {
+        throw new \Exception("env.ini file not found");
+    }
     if(!isset($_ENV['envConfig'])) {
-        $_ENV['envConfig'] = parse_ini_file(BASE_PATH . 'env.ini');
+        $_ENV['envConfig'] = parse_ini_file($envFile);
     }
     return $_ENV['envConfig'][$key];
 }

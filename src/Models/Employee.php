@@ -34,7 +34,7 @@ class Employee extends Model {
             $this->addError('Last name is required');
         }
         else if($length > self::LAST_NAME_MAX_LENGTH) {
-            $this->addError('First name cannot exceed ' . self::LAST_NAME_MAX_LENGTH . ' characters');
+            $this->addError('Last name cannot exceed ' . self::LAST_NAME_MAX_LENGTH . ' characters');
         }
     }
 
