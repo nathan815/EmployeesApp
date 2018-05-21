@@ -42,7 +42,7 @@ class EmployeeService extends Service {
             'first_name' => $employee->first_name,
             'last_name' => $employee->last_name
         ]);
-        return $this->dataQuery->rowsAffected();
+        return $this->dataQuery->lastId();
     }
 
     public function delete(Employee $employee) {

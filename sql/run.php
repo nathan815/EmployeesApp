@@ -12,16 +12,14 @@ echo $commandBegin . "\n";
 
 $files = scandir('./');
 $files = array_filter($files, function($file) {
-    return strpos($file, '.sql') > -1;
+    return strpos($file, '.sql') !== false;
 });
 
 foreach($files as $file) {
-    $file = __DIR__ . DIRECTORY_SEPARATOR . $file;
     echo "Running $file...\n";
+    $file = __DIR__ . DIRECTORY_SEPARATOR . $file;
     $command =  "$commandBegin < $file";
-    $output = shell_exec($command);
-    $output = substr(strlen)
-    echo $output;
+    shell_exec($command);
 }
 
-echo 'Done';
+echo "Done";
